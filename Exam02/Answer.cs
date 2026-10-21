@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Exam02
 {
-    internal class Answer
+    internal class Answer : ICloneable
     {
         public int AnswerId { get; set; }
         public string AnswerText { get; set; }
@@ -16,8 +16,12 @@ namespace Exam02
         }
         public override string ToString()
         {
-            return $"AnswerId: {AnswerId}, AnswerText: {AnswerText}";
+            return $"{AnswerId}. {AnswerText}";
         }
 
+        public object Clone()
+        {
+            return new Answer(AnswerId, AnswerText);
+        }
     }
 }

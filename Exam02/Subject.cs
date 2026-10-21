@@ -25,7 +25,33 @@ namespace Exam02
             }
             else if (exType == "practical")
             {
-                Exam = new PracticalExam(time, questions.Length, questions);
+                int count = 0;
+
+                for (int i = 0; i < questions.Length; i++)
+                {
+                    if (questions[i] is MCQ)
+                    {
+                        count++;
+                    }
+                }
+
+                MCQ[] mcqQuestions = new MCQ[count];
+
+                int index = 0;
+
+                for (int i = 0; i < questions.Length; i++)
+                {
+                    if (questions[i] is MCQ)
+                    {
+                        mcqQuestions[index] = (MCQ)questions[i];
+                        index++;
+                    }
+                }
+
+                Exam = new PracticalExam(
+                    time,
+                    mcqQuestions.Length,
+                    mcqQuestions);
             }
             else
             {

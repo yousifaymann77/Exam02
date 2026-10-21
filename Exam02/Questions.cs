@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Exam02
 {
-    internal abstract class Questions
+    internal abstract class Questions : IComparable<Questions>
     {
         public string Header { get; set; }
         public string Body { get; set; }
@@ -31,6 +31,14 @@ namespace Exam02
                 result += ans + "\n";
             }
             return result ; 
+        }
+
+        public int CompareTo(Questions other)
+        {
+            if (other == null)
+                return 1;
+
+            return Mark.CompareTo(other.Mark);
         }
     }
 }
